@@ -1,0 +1,23 @@
+[package]
+name = "smart_card"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ink = { version = "6.0.0", default-features = false }
+
+[lib]
+name = "lib.rs"
+crate-type = ["cdylib"]
+
+[features]
+default = ["std"]
+std = ["ink/std"]
+ink-as-dependency = []
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+opt-level = "z"
+lto = true
+debug = false
